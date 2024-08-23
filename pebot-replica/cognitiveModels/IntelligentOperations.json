@@ -1,0 +1,187 @@
+{
+  "luis_schema_version": "7.0.0",
+  "versionId": "0.1",
+  "name": "FuturifyOps",
+  "desc": "CLU model for Inteligent Operations",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "SearchSolution"
+    },
+    {
+      "name": "GenerateReport"
+    },
+    {
+      "name": "GetListIncidents"
+    },
+    {
+      "name": "GetLogs"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [],
+  "closedLists": [
+    {
+      "name": "Application",
+      "subLists": [
+        {
+          "canonicalForm": "Offers",
+          "list": [
+            "offers"
+          ]
+        },
+        {
+          "canonicalForm": "Promotions",
+          "list": [
+            "promotions"
+          ]
+        },
+        {
+          "canonicalForm": "Prices",
+          "list": [
+            "prices"
+          ]
+        },
+        {
+          "canonicalForm": "Items",
+          "list": [
+            "items"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "Issue",
+      "subLists": [
+        {
+          "canonicalForm": "JAVA-001",
+          "list": [
+            "001"
+          ]
+        },
+        {
+          "canonicalForm": "JAVA-002",
+          "list": [
+            "002"
+          ]
+        },
+        {
+          "canonicalForm": "JAVA-003",
+          "list": [
+            "003"
+          ]
+        },
+        {
+          "canonicalForm": "JAVA-004",
+          "list": [
+            "004"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "datetimeV2",
+      "roles": []
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "Generate a report",
+      "intent": "GenerateReport",
+      "entities": []
+    },
+    {
+      "text": "Generate a sales report",
+      "intent": "GenerateReport",
+      "entities": [
+        {
+          "entity": "Sales",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "Generate a failed order report",
+      "intent": "GenerateReport",
+      "entities": [
+        {
+          "entity": "Failed Order",
+          "startPos": 12,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "Send me a list of incidents",
+      "intent": "GetListIncidents",
+      "entities": [
+        {
+          "entity": "Incidents",
+          "startPos": 17,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "book a restaurant",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "I want to find solution for a service error",
+      "intent": "SearchSolution",
+      "entities": [
+        {
+          "entity": "find",
+          "startPos": 16,
+          "endPos": 23
+        },
+        {
+          "entity": "Service",
+          "startPos": 39,
+          "endPos": 43
+        }
+      ]
+    },
+    {
+      "text": "Get the logs of the application Promotions",
+      "intent": "GetLogs",
+      "entities": [
+        {
+          "entity": "logs",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "Application",
+          "startPos": 20,
+          "endPos": 30
+        },
+        {
+          "entity": "Promotions",
+          "startPos": 34,
+          "endPos": 43
+        }
+      ]
+    },
+    {
+      "text": "find an airport near me",
+      "intent": "None",
+      "entities": []
+    }
+  ],
+  "settings": []
+}

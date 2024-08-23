@@ -1,0 +1,123 @@
+{
+  "luis_schema_version": "7.0.0",
+  "versionId": "0.1",
+  "name": "ReportGeneration",
+  "desc": "CLU model for generating reports via a conversational interface",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "GenerateReport"
+    },
+    {
+      "name": "InquireReportStatus"
+    }
+  ],
+  "entities": [
+    {
+      "name": "ReportType",
+      "children": []
+    },
+    {
+      "name": "DateRange",
+      "children": [
+        {
+          "name": "StartDate"
+        },
+        {
+          "name": "EndDate"
+        }
+      ]
+    },
+    {
+      "name": "Metric",
+      "children": []
+    }
+  ],
+  "utterances": [
+    {
+      "text": "Generate a sales report for the last quarter",
+      "intent": "GenerateReport",
+      "entities": [
+        {
+          "entityName": "ReportType",
+          "startPos": 10,
+          "endPos": 14
+        },
+        {
+          "entityName": "DateRange",
+          "startPos": 31,
+          "endPos": 43
+        }
+      ]
+    },
+    {
+      "text": "I need a report on customer feedback for July 2024",
+      "intent": "GenerateReport",
+      "entities": [
+        {
+          "entityName": "ReportType",
+          "startPos": 16,
+          "endPos": 32
+        },
+        {
+          "entityName": "DateRange",
+          "startPos": 37,
+          "endPos": 45
+        }
+      ]
+    },
+    {
+      "text": "Can you provide a performance report for last month?",
+      "intent": "GenerateReport",
+      "entities": [
+        {
+          "entityName": "ReportType",
+          "startPos": 19,
+          "endPos": 38
+        },
+        {
+          "entityName": "DateRange",
+          "startPos": 43,
+          "endPos": 53
+        }
+      ]
+    },
+    {
+      "text": "What is the status of the sales report?",
+      "intent": "InquireReportStatus",
+      "entities": [
+        {
+          "entityName": "ReportType",
+          "startPos": 25,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "Has the monthly report been generated?",
+      "intent": "InquireReportStatus",
+      "entities": [
+        {
+          "entityName": "ReportType",
+          "startPos": 8,
+          "endPos": 21
+        }
+      ]
+    }
+  ],
+  "prebuiltEntities": [
+    "datetimeV2"
+  ],
+  "patterns": [],
+  "regex_entities": [],
+  "composites": [],
+  "closedLists": [],
+  "model_features": [],
+  "regex_features": [],
+  "patternAnyEntities": [],
+  "phraselists": [],
+  "settings": [],
+  "roles": [],
+  "features": []
+}

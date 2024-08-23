@@ -1,0 +1,99 @@
+{
+    "luis_schema_version": "7.0.0",
+    "versionId": "0.1",
+    "name": "SearchOperations",
+    "desc": "CLU model for Search Operations",
+    "culture": "en-us",
+    "tokenizerVersion": "1.0.0",
+    "intent": {
+        "primary": "Request_Solution",
+        "sub_intent": "Inquire_Specific_Issue"
+    },
+    "entities": [
+        {
+            "type": "IssueIdentifier",
+            "values": [
+                "JAVA-001",
+                "JAVA-002",
+                "JAVA-003",
+                "JAVA-004"
+            ]
+        },
+        {
+            "type": "ApplicationName",
+            "values": [
+                "Offers",
+                "Promotions",
+                "Prices",
+                "Items"
+            ]
+        }
+    ],
+    "context": {
+        "application_context": "Offers",
+        "issue_severity": "Unknown"
+    },
+    "expected_actions": [
+        {
+            "action": "SearchDatabase",
+            "description": "Query the database via Azure Search to retrieve the solution for the specified Java issue in the specified application.",
+            "parameters": {
+                "index_name": "java_issues_index",
+                "query": {
+                    "issue_id": "{IssueIdentifier}",
+                    "application": "{ApplicationName}"
+                }
+            }
+        },
+        {
+            "action": "ProvideContextualInformation",
+            "description": "Deliver the solution and any relevant details retrieved from the database to the user."
+        }
+    ],
+    "example_dialogue": {
+        "user": "What is the solution to the JAVA-002 issue for the Prices application?",
+        "system": "The JAVA-002 issue in the Prices application is caused by an outdated dependency on the pricing engine. To resolve this, please update the dependency to version 3.2.1 and restart the pricing service. Would you like more details on how to perform this update?"
+    },
+    "error_handling": {
+        "unknown_issue": {
+            "response": "I couldn't find any information about the JAVA-002 issue in the specified application. Could you please double-check the issue code or application name?"
+        },
+        "ambiguity": {
+            "response": "There are multiple issues listed for the specified Java code. Could you specify whether you’re referring to the Offers, Promotions, Prices, or Items application?"
+        }
+    },
+    "follow_up_actions": [
+        {
+            "action": "ConfirmSolutionImplementation",
+            "response": "Were you able to resolve the JAVA-002 issue with the provided solution?"
+        },
+        {
+            "action": "Escalation",
+            "response": "If the issue persists, would you like me to escalate this to the technical support team?"
+        }
+    ],
+    "utterances": [
+        {
+            "intent": "Request_Solution",
+            "utterances": [
+                "What is the solution to the JAVA-002 issue for the Prices application?",
+                "How do I fix JAVA-003 in the Promotions application?",
+                "Can you help with JAVA-004 in the Items application?",
+                "What is the resolution for JAVA-002 in Offers?",
+                "I need help with JAVA-003 in the Prices app.",
+                "Is there a fix for JAVA-004 in Promotions?"
+            ]
+        },
+        {
+            "intent": "Inquire_Specific_Issue",
+            "utterances": [
+                "I'm having an issue with JAVA-002 in the Offers application.",
+                "There is a problem with JAVA-003 in the Prices app, what should I do?",
+                "JAVA-004 is causing errors in Promotions, what is the fix?",
+                "How do I resolve JAVA-002 in Items?",
+                "Offers app is throwing a JAVA-003 error, what is the solution?",
+                "JAVA-004 issue in Prices, need a fix."
+            ]
+        }
+    ]
+}
